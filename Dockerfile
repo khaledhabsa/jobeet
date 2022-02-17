@@ -24,7 +24,9 @@ COPY . /app
 RUN composer update
 RUN composer require predis/predis
 RUN php artisan key:generate
+RUN php artisan migrate
+RUN php artisan module:seed
+#RUN php artisan passport:install
 RUN php artisan optimize
-RUN php artisan passport:install
 CMD php artisan serve --host=0.0.0.0 --port=80
 EXPOSE 80

@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/job",
+    "name": "nwidart/jobs",
     "description": "",
     "authors": [
         {
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Job\\": ""
+            "Modules\\Jobs\\": ""
         }
     }
 }

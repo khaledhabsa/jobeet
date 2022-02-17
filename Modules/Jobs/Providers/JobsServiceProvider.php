@@ -1,21 +1,21 @@
 <?php
 
-namespace Modules\Job\Providers;
+namespace Modules\Jobs\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class JobServiceProvider extends ServiceProvider
+class JobsServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'Job';
+    protected $moduleName = 'Jobs';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'job';
+    protected $moduleNameLower = 'jobs';
 
     /**
      * Boot the application events.

@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Job\Http\Controllers;
+namespace Modules\Jobs\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class JobController extends Controller
+class JobsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('job::index');
+        return view('jobs::index');
     }
 
     /**
@@ -23,7 +23,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('job::create');
+        return view('jobs::create');
     }
 
     /**
@@ -43,7 +43,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        return view('job::show');
+        return view('jobs::show');
     }
 
     /**
@@ -53,7 +53,7 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        return view('job::edit');
+        return view('jobs::edit');
     }
 
     /**

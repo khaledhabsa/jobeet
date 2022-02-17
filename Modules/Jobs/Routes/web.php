@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('job')->group(function() {
-    Route::get('/', 'JobController@index');
+Route::prefix('jobs')->group(function() {
+    Route::get('/', 'JobsController@index');
 });

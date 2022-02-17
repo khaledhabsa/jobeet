@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Job\Database\Seeders;
+namespace Modules\Jobs\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class JobDatabaseSeeder extends Seeder
+class JobsDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -15,6 +15,6 @@ use Modules\Orders\Http\Controllers\Api\TripController;
 */
 
 Route::middleware('auth:api')->prefix('trips')->group(function () {
-    Route::get('/', [TripController::class, 'index'])->middleware('permission:trips.show');
-    Route::post('/', [TripController::class, 'store'])->middleware('permission:trips.create');
+    Route::get('/', [TripController::class, 'index']);
+    Route::post('/', [TripController::class, 'store']);
 });

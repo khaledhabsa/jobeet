@@ -1,11 +1,11 @@
 {
-    "name": "Job",
-    "alias": "job",
+    "name": "Jobs",
+    "alias": "jobs",
     "description": "",
     "keywords": [],
     "priority": 0,
     "providers": [
-        "Modules\\Job\\Providers\\JobServiceProvider"
+        "Modules\\Jobs\\Providers\\JobsServiceProvider"
     ],
     "aliases": {},
     "files": [],
