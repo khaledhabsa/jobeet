@@ -45,7 +45,7 @@ class JobController extends Controller
         $trip->status           = $request->input('status') ;
         $trip->save();
 
-        return sendResponse(true, 'Trip added successfully', []);
+        return sendResponse(true, 'Job added successfully', []);
     }
 
     /**

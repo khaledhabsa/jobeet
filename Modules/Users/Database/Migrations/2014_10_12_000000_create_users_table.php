@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('social_provider')->nullable();
             $table->string('social_id')->nullable();
             $table->string('user_type')->nullable();
+            $table->date('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
