@@ -30,15 +30,17 @@ class ModeratorController extends Controller
     public function store(ModeratorRequest $request)
     {
         $user = new user();
-        $user->parent_id    = auth()->user()->id;
+        // fixed company_id till we complete senario.
+        $user->company_id   = 1;
         $user->email        = $request->input('email');
         $user->name         = $request->input('name');
         $user->password     = Hash::make($request->input('password'));
-        $user->user_type    = 'admin';
+        $user->user_type    = 'regular';
         $user->save();
-        $user->assignRole($request->input('role_id'));
+        $user->assignRole('1');
 
-        return sendResponse(true, 'Moderator created successfully', [], 201);
+        //return sendResponse(true, 'Moderator created successfully', [], 201);
+        return sendResponse(true, __('messages.successfully_registered'), new UserResource($user), Response::HTTP_CREATED);
     }
 
     /**

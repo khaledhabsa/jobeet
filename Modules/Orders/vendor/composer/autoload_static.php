@@ -24,9 +24,9 @@ class ComposerStaticInit9d3f3f3b284f8b3a3443f767fda79fe8
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Modules\\Orders\\Database\\Seeders\\OrdersDatabaseSeeder' => __DIR__ . '/../..' . '/Database/Seeders/OrdersDatabaseSeeder.php',
         'Modules\\Orders\\Entities\\Trip' => __DIR__ . '/../..' . '/Entities/Trip.php',
-        'Modules\\Orders\\Http\\Controllers\\Api\\TripController' => __DIR__ . '/../..' . '/Http/Controllers/Api/TripController.php',
+        'Modules\\Orders\\Http\\Controllers\\Api\\JobController' => __DIR__ . '/../..' . '/Http/Controllers/Api/JobController.php',
         'Modules\\Orders\\Http\\Controllers\\OrdersController' => __DIR__ . '/../..' . '/Http/Controllers/OrdersController.php',
-        'Modules\\Orders\\Http\\Requests\\TripRequest' => __DIR__ . '/../..' . '/Http/Requests/TripRequest.php',
+        'Modules\\Orders\\Http\\Requests\\JobRequest' => __DIR__ . '/../..' . '/Http/Requests/JobRequest.php',
         'Modules\\Orders\\Providers\\OrdersServiceProvider' => __DIR__ . '/../..' . '/Providers/OrdersServiceProvider.php',
         'Modules\\Orders\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Providers/RouteServiceProvider.php',
     );

@@ -37,7 +37,7 @@ class User extends Authenticatable
     ];
 
     public function getCompanyIdAttribute(){
-        return $this->parent_id ?? $this->id;
+        return $this->company_id ?? $this->id;
     }
     public function devices(){
         return $this->hasMany(UserDevice::class);

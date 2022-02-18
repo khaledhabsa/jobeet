@@ -9,9 +9,9 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Modules\\Orders\\Database\\Seeders\\OrdersDatabaseSeeder' => $baseDir . '/Database/Seeders/OrdersDatabaseSeeder.php',
     'Modules\\Orders\\Entities\\Trip' => $baseDir . '/Entities/Trip.php',
-    'Modules\\Orders\\Http\\Controllers\\Api\\TripController' => $baseDir . '/Http/Controllers/Api/TripController.php',
+    'Modules\\Orders\\Http\\Controllers\\Api\\JobController' => $baseDir . '/Http/Controllers/Api/JobController.php',
     'Modules\\Orders\\Http\\Controllers\\OrdersController' => $baseDir . '/Http/Controllers/OrdersController.php',
-    'Modules\\Orders\\Http\\Requests\\TripRequest' => $baseDir . '/Http/Requests/TripRequest.php',
+    'Modules\\Orders\\Http\\Requests\\JobRequest' => $baseDir . '/Http/Requests/JobRequest.php',
     'Modules\\Orders\\Providers\\OrdersServiceProvider' => $baseDir . '/Providers/OrdersServiceProvider.php',
     'Modules\\Orders\\Providers\\RouteServiceProvider' => $baseDir . '/Providers/RouteServiceProvider.php',
 );

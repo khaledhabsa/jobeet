@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id')->nullable()->index();
+            $table->unsignedBigInteger('company_id')->index()->default(1);
             $table->string('name')->nullable();
             $table->string('email')->nullable()->unique()->index();
             $table->string('profile_image')->nullable();
@@ -26,6 +26,9 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+
+            //$table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
+
         });
     }
 

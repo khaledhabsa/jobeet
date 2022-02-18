@@ -33,19 +33,22 @@ class AuthController extends Controller
         $user = new user();
         $user->email = $request->input('email');
         $user->name = $request->input('name');
+
+        // company_id fixed to be 1, as we need to complete registration cycle in real life scenario.
+        $user->company_id = 1;
         $user->password = Hash::make($request->input('password'));
-        $user->user_type = 'company';
+        $user->user_type = 'manager';
         $user->save();
-        $user->assignRole(1);
+        //$user->assignRole(1);
 
         $user->token = $user->createToken('authToken')->accessToken;
-
-//        \Mail::to($user->email)->send(new WelcomeEmail(['name' => $user->name]));
+        // mail veriviacation is disabled  
+        //\Mail::to($user->email)->send(new WelcomeEmail(['name' => $user->name]));
 
         return sendResponse(true, __('messages.successfully_registered'), new UserResource($user), Response::HTTP_CREATED);
     }
 
-    //
+    
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [

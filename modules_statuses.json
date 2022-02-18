@@ -1,6 +1,5 @@
 {
-    "Job": true,
     "Users": true,
     "Orders": true,
-    "Jobs": true
+    "Company": true
 }

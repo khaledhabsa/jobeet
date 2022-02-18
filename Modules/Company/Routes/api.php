@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Modules\Orders\Http\Controllers\Api\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +13,6 @@ use Modules\Orders\Http\Controllers\Api\JobController;
 |
 */
 
-Route::middleware('auth:api')->prefix('jobs')->group(function () {
-    Route::get('/', [JobController::class, 'index']);
-    Route::post('/', [JobController::class, 'store']);
+Route::middleware('auth:api')->get('/company', function (Request $request) {
+    return $request->user();
 });
