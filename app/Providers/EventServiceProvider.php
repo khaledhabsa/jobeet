@@ -15,8 +15,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        JobPosted::class => [
-            NotifyManagerOfANewjob::class,
+        Registered::class => [
+            SendEmailVerificationNotification::class,
         ],
     ];
 

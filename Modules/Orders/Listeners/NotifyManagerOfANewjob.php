@@ -29,13 +29,16 @@ class NotifyManagerOfANewjob implements ShouldQueue
 
     public function handle(JobPosted $event)
     {
-        //$current_timestamp = Carbon::now()->toDateTimeString();
+        $job = $event->$job;
 
-        $userinfo = $event->$job;
+        $notifyData = [
+            'name' => 'new job posted succefuly',
+            'body' => 'new job posted succefuly.',
+            'thanks' => 'Thank you',
+            'job_id' => 007
+        ];
+  
+        Notification::send($userSchema, new OffersNotification($notifyData));
 
-        // $saveHistory = DB::table('login_history')->insert(
-        //     ['name' => $userinfo->name, 'email' => $userinfo->email, 'created_at' => $current_timestamp, 'updated_at' => $current_timestamp]
-        // );
-        return $userinfo;
     }
 }
