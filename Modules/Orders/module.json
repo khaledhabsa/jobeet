@@ -5,7 +5,8 @@
     "keywords": [],
     "priority": 0,
     "providers": [
-        "Modules\\Orders\\Providers\\OrdersServiceProvider"
+        "Modules\\Orders\\Providers\\OrdersServiceProvider",
+        "Modules\\Orders\\Providers\\EventServiceProvider"
     ],
     "aliases": {},
     "files": [],

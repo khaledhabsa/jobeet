@@ -33,4 +33,19 @@ class AuthenticationTesting extends TestCase
                 'success' => true,
             ]);
     }
+
+
+    public function testRequiredFieldsForRegistration()
+    {
+        $this->json('POST', 'api/register', ['Accept' => 'application/json'])
+            ->assertStatus(422)
+            ->assertJson([
+                "message" => "The given data was invalid.",
+                "errors" => [
+                    "name" => ["The name field is required."],
+                    "email" => ["The email field is required."],
+                    "password" => ["The password field is required."],
+                ]
+            ]);
+    }
 }

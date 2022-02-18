@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Orders\Entities\Job;
 use Modules\Orders\Http\Requests\JobRequest;
 use Illuminate\Support\Facades\DB;
+use Modules\Orders\Events\JobPosted;
 
 class JobController extends Controller
 {
@@ -38,12 +39,15 @@ class JobController extends Controller
      */
     public function store(JobRequest $request)
     {
-        $trip = new Job();
-        $trip->user_id          = $request->user('api')->id;
-        $trip->title            = $request->input('title') ;
-        $trip->description      = $request->input('description') ;
-        $trip->status           = $request->input('status') ;
-        $trip->save();
+        $job = new Job();
+        $job->user_id          = $request->user('api')->id;
+        $job->title            = $request->input('title') ;
+        $job->description      = $request->input('description') ;
+        $job->status           = $request->input('status') ;
+        $job->save();
+
+        // fire event to notify the manager with latest job posted.
+        event(new JobPosted($job));
 
         return sendResponse(true, 'Job added successfully', []);
     }
