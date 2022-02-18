@@ -13,6 +13,6 @@ class Company extends Model
     
     protected static function newFactory()
     {
-        return \Modules\Orders\Database\factories\CompanyFactory::new();
+        return \Modules\Jobs\Database\factories\CompanyFactory::new();
     }
 }
