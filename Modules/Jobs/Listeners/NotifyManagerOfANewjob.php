@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Orders\Listeners;
+namespace Modules\Jobs\Listeners;
 
-use Modules\Orders\Events\JobPosted;
+use Modules\Jobs\Events\JobPosted;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

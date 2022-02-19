@@ -7,11 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'Modules\\Orders\\Database\\Seeders\\OrdersDatabaseSeeder' => $baseDir . '/Database/Seeders/OrdersDatabaseSeeder.php',
-    'Modules\\Orders\\Entities\\Trip' => $baseDir . '/Entities/Trip.php',
-    'Modules\\Orders\\Http\\Controllers\\Api\\JobController' => $baseDir . '/Http/Controllers/Api/JobController.php',
-    'Modules\\Orders\\Http\\Controllers\\OrdersController' => $baseDir . '/Http/Controllers/OrdersController.php',
-    'Modules\\Orders\\Http\\Requests\\JobRequest' => $baseDir . '/Http/Requests/JobRequest.php',
-    'Modules\\Orders\\Providers\\OrdersServiceProvider' => $baseDir . '/Providers/OrdersServiceProvider.php',
-    'Modules\\Orders\\Providers\\RouteServiceProvider' => $baseDir . '/Providers/RouteServiceProvider.php',
+    'Modules\\Jobs\\Database\\Seeders\\JobsDatabaseSeeder' => $baseDir . '/Database/Seeders/JobsDatabaseSeeder.php',
+    'Modules\\Jobs\\Entities\\Trip' => $baseDir . '/Entities/Trip.php',
+    'Modules\\Jobs\\Http\\Controllers\\Api\\JobController' => $baseDir . '/Http/Controllers/Api/JobController.php',
+    'Modules\\Jobs\\Http\\Controllers\\JobsController' => $baseDir . '/Http/Controllers/JobsController.php',
+    'Modules\\Jobs\\Http\\Requests\\JobRequest' => $baseDir . '/Http/Requests/JobRequest.php',
+    'Modules\\Jobs\\Providers\\JobsServiceProvider' => $baseDir . '/Providers/JobsServiceProvider.php',
+    'Modules\\Jobs\\Providers\\RouteServiceProvider' => $baseDir . '/Providers/RouteServiceProvider.php',
 );

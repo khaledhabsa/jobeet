@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\Orders\Http\Controllers\Api;
+namespace Modules\Jobs\Http\Controllers\Api;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Orders\Entities\Job;
-use Modules\Orders\Http\Requests\JobRequest;
+use Modules\Jobs\Entities\Job;
+use Modules\Jobs\Http\Requests\JobRequest;
 use Illuminate\Support\Facades\DB;
-use Modules\Orders\Events\JobPosted;
+use Modules\Jobs\Events\JobPosted;
 
 class JobController extends Controller
 {
@@ -18,6 +18,7 @@ class JobController extends Controller
      */
     public function index()
     {
+        //var_dump(auth()->user()->company_id); exit;
         $user_type = auth()->user()->user_type;
         if($user_type == 'regular'){
             $trips = Job::where('user_id', auth()->user()->id)->get();

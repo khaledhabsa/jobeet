@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Orders\Notifications;
+namespace Modules\Jobs\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;

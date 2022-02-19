@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Orders\Tests\Unit;
+namespace Modules\Jobs\Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
-use Modules\Orders\Entities\Job;
+use Modules\Jobs\Entities\Job;
 use Laravel\Passport\Passport;
 
 class jobsTest extends TestCase

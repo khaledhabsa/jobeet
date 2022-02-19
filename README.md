@@ -1,5 +1,54 @@
 # About
-Simple Nodejs app to deploy it to Kubernetes cluster or Docker container.
+We want to build job portal with limited functionality, Have two APIs to register and manage jobs. 
+We have two types of users (regular and manager).
+The job has a little title (max 100 chars) and a description.
+The regular user is only able to see, create and update his jobs. The manager can see all tasks. When a
+new job is created, the managers should be notified.
+
+## requirements 
+1. PHP > 8, MySQL, Redis
+2. Docker installed on you machcine 
+
+## Installation. 
+1. clone git repo to your local machine.
+
+```bash
+$ git clone https://github.com/same7ammar/rancher-desktop-nodejs-sample.git
+$ cd app
+```
+
+**Manual Installation**
+
+```sh
+$ composer install
+
+# Migrate each module individually as needed
+$ php artisan module:migrate Company
+$ php artisan module:migrate Users
+$ php artisan module:migrate Jobs
+
+# Migrate core component 
+$ php artisan migrate
+
+# Seed DB with test data 
+$ php artisan db:seed
+
+# Also you can seed each module individually as needed 
+$ php artisan module:seed module_name
+
+# Run the app
+$ php artisan serve
+```
+
+**Docker Installation**
+```sh
+$ cd app
+$ docker build . -t <your username>/job_portal
+$ docker run -p 80:80 <your username>/job_portal
+
+# Get container ID
+$ docker ps
+```
 
 ## requirements 
 1. Docker Installed.

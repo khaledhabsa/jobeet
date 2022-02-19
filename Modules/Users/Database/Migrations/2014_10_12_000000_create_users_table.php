@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            //$table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
 
         });
     }
