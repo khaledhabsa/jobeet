@@ -19,12 +19,8 @@ use Modules\Users\Http\Controllers\Api\AuthController;
 */
 Route::middleware(['localization'])->group(function() {
     Route::group(['middleware' => 'auth:api'], function () {
-            Route::group(['prefix' => 'moderators'], function () {
+            Route::group(['prefix' => 'employee-signup'], function () {
                 Route::post('/', [ModeratorController::class, 'store']);
-            });
-
-            Route::group(['prefix' => 'drivers'], function () {
-                Route::post('/', [DriverController::class, 'store']);
             });
 
             Route::get('logout', [AuthController::class, 'logout']);

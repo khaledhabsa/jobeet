@@ -18,19 +18,18 @@ class JobController extends Controller
      */
     public function index()
     {
-        //var_dump(auth()->user()->company_id); exit;
         $user_type = auth()->user()->user_type;
         if($user_type == 'regular'){
-            $trips = Job::where('user_id', auth()->user()->id)->get();
+            $jobs = Job::where('user_id', auth()->user()->id)->get();
         }else{
-            $trips = DB::table('jobs')
+            $jobs = DB::table('jobs')
             ->join('users', 'users.id', '=', 'jobs.user_id')
             ->where('users.company_id', '=', auth()->user()->company_id)
             ->select('jobs.id','jobs.title','jobs.status', 'jobs.description')
             ->get();
 
         }
-        return sendResponse(true, $trips);
+        return sendResponse(true, $jobs);
     }
 
     /**

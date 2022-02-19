@@ -24,8 +24,18 @@ COPY . /app
 RUN composer update
 RUN composer require predis/predis
 RUN php artisan key:generate
+
+# Migrate each module individually as needed
+RUN php artisan module:migrate Company
+RUN php artisan module:migrate Users
+RUN php artisan module:migrate Jobs
+
+# Migrate core component 
 RUN php artisan migrate
-RUN php artisan module:seed
+
+# Seed DB with test data 
+$ php artisan db:seed
+
 #RUN php artisan passport:install
 RUN php artisan optimize
 CMD php artisan serve --host=0.0.0.0 --port=80

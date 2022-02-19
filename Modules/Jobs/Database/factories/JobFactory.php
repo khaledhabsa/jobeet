@@ -2,6 +2,7 @@
 namespace Modules\Jobs\Database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Jobs\Entities\Job;
 
 class JobFactory extends Factory
 {
@@ -10,7 +11,7 @@ class JobFactory extends Factory
      *
      * @var string
      */
-    protected $model = \Modules\Jobs\Entities\JobFactory::class;
+    protected $model = Job::class;
 
     /**
      * Define the model's default state.
@@ -20,10 +21,12 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->name(),
+            // fixed user id and job status
+            // unitests will change user id dynamicaly based on created user object
+            'user_id' => 1,
             'title' => $this->faker->name(),
             'description' => $this->faker->text(),
-            'status' => $this->faker->contract(),
+            'status' => 'pending',
         ];
     }
 }

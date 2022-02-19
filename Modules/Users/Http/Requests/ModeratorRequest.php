@@ -28,7 +28,6 @@ class ModeratorRequest extends FormRequest
         return [
             'name'      => 'required|string',
             'email'     => 'required|email|unique:users,email',
-            'role_id'   => 'required|exists:roles,id',
             'password'  => 'required|string|min:8'
         ];
     }
@@ -40,7 +39,6 @@ class ModeratorRequest extends FormRequest
             'email.required' => __('messages.validate_required_email'),
             'email.email' => __('messages.validate_email'),
             'email.unique' => __('messages.validate_unique_email'),
-            'role_id' => __('messages.validate_role'),
             'password' => __('messages.validate_password'),
         ];
     }

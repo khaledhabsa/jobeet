@@ -40,7 +40,7 @@ class ModeratorController extends Controller
         $user->assignRole('1');
 
         //return sendResponse(true, 'Moderator created successfully', [], 201);
-        return sendResponse(true, __('messages.successfully_registered'), new UserResource($user), Response::HTTP_CREATED);
+        return sendResponse(true, __('messages.successfully_registered'));
     }
 
     /**

@@ -104,7 +104,7 @@ Modules/
 There are three primary objects: User, Entity (e.g. company, notifications.), and Job
 ![alt text](http://url/to/img.png)
 
-## run test cases:
+## Run test cases:
 ```sh
 # Run all test cases of system module.
 $ php artisan test
@@ -112,7 +112,7 @@ $ php artisan test
 
 
 
-## quick install .
+## Deploy on Kubernetes:
 ```sh
 $ kubectl apply -f https://raw.githubusercontent.com/same7ammar/rancher-desktop-nodejs-sample/main/kubernetes/deployment.yaml
 $ kubectl apply -f hhttps://raw.githubusercontent.com/same7ammar/rancher-desktop-nodejs-sample/main/kubernetes/service.yaml
