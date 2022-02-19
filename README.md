@@ -1,64 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# About
+We want to build job portal with limited functionality, Have two APIs to register and manage jobs. 
+We have two types of users (regular and manager).
+The job has a little title (max 100 chars) and a description.
+The regular user is only able to see, create and update his jobs. The manager can see all tasks. When a
+new job is created, the managers should be notified.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## requirements 
+1. PHP > 8, MySQL, Redis
+2. Docker installed on you machcine 
 
-## About Laravel
+## Installation. 
+1. clone git repo to your local machine.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```bash
+$ git clone https://github.com/same7ammar/rancher-desktop-nodejs-sample.git
+$ cd app
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Manual Installation**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```sh
+$ composer install
 
-## Learning Laravel
+# Migrate each module individually as needed
+$ php artisan module:migrate Company
+$ php artisan module:migrate Users
+$ php artisan module:migrate Jobs
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Migrate core component 
+$ php artisan migrate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Seed DB with test data 
+$ php artisan db:seed
 
-## Laravel Sponsors
+# Also you can seed each module individually as needed 
+$ php artisan module:seed module_name
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Run the app
+$ php artisan serve
+```
 
-### Premium Partners
+**Docker Installation**
+```sh
+$ cd app
+$ docker build . -t <your username>/job_portal
+$ docker run -p 80:80 <your username>/job_portal
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+# Get container ID
+$ docker ps
+```
+
+## requirements 
+1. Docker Installed.
+2. Rancher Desktop - https://rancherdesktop.io .
+3. kubectl if not installed .
+
+## quick install .
+```sh
+$ kubectl apply -f https://raw.githubusercontent.com/same7ammar/rancher-desktop-nodejs-sample/main/kubernetes/deployment.yaml
+$ kubectl apply -f hhttps://raw.githubusercontent.com/same7ammar/rancher-desktop-nodejs-sample/main/kubernetes/service.yaml
+$ kubectl get svc
+NAME             TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)          AGE
+nodejs-web-app   LoadBalancer   10.43.240.254   172.17.152.146   3000:30043/TCP   7s
+to test service use  curl http://EXTERNAL-IP:PORT
+$ curl http://172.17.152.146 
+Hello World
+```
+## Build your own docker image and push it to Docker hub.
+
+1. clone git repo to your local machine.
+
+```bash
+git clone https://github.com/same7ammar/rancher-desktop-nodejs-sample.git
+```
+
+2. Build  your docker image :
+
+```sh
+$ cd app
+$ docker build . -t <your username>/nodejs-sample-k8s
+$ docker run -p 3000:3000-d <your username>/nodejs-sample-k8s
+# Get container ID
+$ docker ps
+$ curl curl http://localhost:3000
+Hello World
+```
+3. Upload image to   your docker-Hub Account :
+```sh
+$ docker login -u same7ammar  --password-stdin 
+Login Succeeded
+$ docker push <your username>/nodejs-sample-k8s
+Using default tag: latest
+The push refers to repository [docker.io/same7ammar/node-web-app-k8s]
+.....
+latest: digest: sha256:fa5dd972a9cd1555f3cb4a837aaf5d78bc862fa0053474d9f64f3e7d3eb15ae2 size: 3048
+
+```
+## Deploy to Kubernetes - Rancher Desktop or other types. 
+1. create a deployment .
+```sh 
+$ kubectl apply -f kubernetes/deployment.yaml 
+deployment.apps/nodejs-web-app created
+
+$  kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+nodejs-web-app-6fdf6d4f54-m4mgn   0/1     ContainerCreating   0          10s
+
+$ kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+nodejs-web-app-6fdf6d4f54-m4mgn   1/1     Running   0          2m18s
+
+```
+2. create a service to expose this app .
+```sh
+$ kubectl apply -f kubernetes/service.yaml
+service/nodejs-web-app created
+
+$ kubectl get svc
+NAME             TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)          AGE
+nodejs-web-app   LoadBalancer   10.43.240.254   172.17.152.146   3000:30043/TCP   7s
+to test service use  curl http://EXTERNAL-IP:PORT
+$ curl http://172.17.152.146 
+Hello World
+```
 
 ## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Please make sure to update tests as appropriate.
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[MIT](https://choosealicense.com/licenses/mit/)

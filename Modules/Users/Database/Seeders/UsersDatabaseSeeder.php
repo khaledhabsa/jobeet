@@ -18,18 +18,26 @@ class UsersDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
+        DB::table('company')->insert([
+            'name'          => 'Laravel',
+            'description'   => 'info@laravel.com',
+            'status'        => 'pending',
+        ]);
+
         DB::table('users')->insert([
-            'name'      => 'admin',
-            'email'     => 'admin@mail.com',
-            'password'  => Hash::make('password'),
-            'user_type' => 'admin'
+            'name'       => 'admin',
+            'email'      => 'admin@mail.com',
+            'company_id' => '1',
+            'password'   => Hash::make('password'),
+            'user_type'  => 'manager'
         ]);
 
         DB::table('users')->insert([
             'name'      => 'company name',
             'email'     => 'company@mail.com',
+            'company_id' => '1',
             'password'  => Hash::make('password'),
-            'user_type' => 'company'
+            'user_type' => 'regular'
         ]);
 
         DB::table('roles')->insert(['name'  => 'Super admin', 'guard_name' => 'api', 'created_at' => now(), 'updated_at' => now()]);
