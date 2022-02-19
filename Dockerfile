@@ -34,7 +34,7 @@ RUN php artisan module:migrate Jobs
 RUN php artisan migrate
 
 # Seed DB with test data 
-$ php artisan db:seed
+RUN php artisan db:seed
 
 #RUN php artisan passport:install
 RUN php artisan optimize
