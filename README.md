@@ -50,10 +50,67 @@ $ docker run -p 80:80 <your username>/job_portal
 $ docker ps
 ```
 
-## requirements 
-1. Docker Installed.
-2. Rancher Desktop - https://rancherdesktop.io .
-3. kubectl if not installed .
+## Technologies and Architecture:
+**System Component:**
+1. Laravel 9 
+2. MYSQL as Database Engine
+3. Redis as a message broker used to decouple/queue background events from the rest of the busniess logic.
+
+**System Structure:**
+We aim to build Monolithic Modular application, ready to be decoupled if needed with couple of command.
+Each Module has its own database, controllers, services, events , configurations and tests suits.
+Used Laravel [Pachage link](https://github.com/nWidart/laravel-modules) 
+Following is the structure:
+```sh
+app/
+bootstrap/
+vendor/
+Modules/
+  ├── Users/
+      ├── Assets/
+      ├── Config/
+      ├── Console/
+      ├── Database/
+          ├── Migrations/
+          ├── Seeders/
+      ├── Entities/
+      ├── Http/
+          ├── Controllers/
+          ├── Middleware/
+          ├── Requests/
+      ├── Providers/
+          ├── UsersServiceProvider.php
+          ├── RouteServiceProvider.php
+      ├── Resources/
+          ├── assets/
+              ├── js/
+                ├── app.js
+              ├── sass/
+                ├── app.scss
+          ├── lang/
+          ├── views/
+      ├── Routes/
+          ├── api.php
+          ├── web.php
+      ├── Repositories/
+      ├── Tests/
+      ├── composer.json
+      ├── module.json
+      ├── package.json
+      ├── webpack.mix.js
+```
+
+**System Classes:**
+There are three primary objects: User, Entity (e.g. company, notifications.), and Job
+![alt text](http://url/to/img.png)
+
+## run test cases:
+```sh
+# Run all test cases of system module.
+$ php artisan test
+```
+
+
 
 ## quick install .
 ```sh
